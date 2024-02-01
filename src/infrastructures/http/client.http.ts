@@ -11,7 +11,7 @@ const enum StatusCode {
 }
 
 const headers: Readonly<Record<string, string | boolean>> = {
-  "Content-Type": "x-www-form-urlencoded",
+  "Content-Type": "application/x-www-form-urlencoded, application/json; charset=utf-8",
 };
 
 class Http {

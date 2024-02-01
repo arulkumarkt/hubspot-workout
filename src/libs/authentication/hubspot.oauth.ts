@@ -1,6 +1,7 @@
 import { AxiosResponse } from "axios";
 import { httpClient } from "@infrastructures/http/client.http";
 import * as hubspot from "@hubspot/api-client";
+
 export const generateAccessTokenUsingRefreshToken = async () => {
   const payload = {
     client_id: "8fdb995e-f29b-4e13-93a2-c995c9749792",
@@ -17,13 +18,8 @@ export const generateAccessTokenUsingRefreshToken = async () => {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
       }
     );
-    return res.data.access_token;
+    return new hubspot.Client({ accessToken: res?.data?.access_token });
   } catch (e) {
-    console.error(e);
+    console.error(e?.message);
   }
-};
-
-export const generateHubspotClient = async () => {
-  const accessToken = await generateAccessTokenUsingRefreshToken();
-  return new hubspot.Client({ accessToken });
 };

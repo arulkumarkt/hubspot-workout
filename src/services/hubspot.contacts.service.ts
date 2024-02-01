@@ -1,7 +1,8 @@
+import { generateAccessTokenUsingRefreshToken } from "@libs/authentication/hubspot.oauth";
+
 /* eslint-disable no-useless-escape */
-import { generateHubspotClient } from "@libs/authentication/hubspot.oauth";
 export const getAllContacts = async () => {
-  const hubspotClient = await generateHubspotClient();
+  const hubspotClient = await generateAccessTokenUsingRefreshToken();
   const limit = 10;
   const after = undefined;
   const properties = undefined;
@@ -30,7 +31,8 @@ export const getAllContacts = async () => {
 };
 
 export const getAllMeetings = async () => {
-  const hubspotClient = await generateHubspotClient();
+  const hubspotClient = await generateAccessTokenUsingRefreshToken();
+
   const limit = 10;
   const after = undefined;
   const properties = ["hs_internal_meeting_notes"];

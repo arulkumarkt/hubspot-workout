@@ -29,5 +29,9 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
+        "no-console": "off",
+        "no-unused-vars": "error",
+        "no-dupe-keys": "error",
+        "@typescript-eslint/no-explicit-any": "off",
     }
 }
