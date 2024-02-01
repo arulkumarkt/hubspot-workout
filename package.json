@@ -15,6 +15,7 @@
     "@hubspot/api-client": "^10.2.0",
     "@middy/core": "^3.4.0",
     "@middy/http-json-body-parser": "^3.4.0",
+    "json2typescript": "^1.5.1",
     "prettier": "^3.2.4"
   },
   "devDependencies": {
