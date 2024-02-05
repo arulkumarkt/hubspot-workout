@@ -1,27 +1,28 @@
-import { AWSFunction } from "@libs/lambda";
-import { handlerPath } from "@libs/handler-resolver";
+/* eslint-disable no-undef */
+import { handlerPath } from '@libs/handler-resolver';
+import { AWSFunction } from '@libs/lambda';
+import { connectHubspotValidator } from './validators/connectHubspot';
 
-export const getAllContacts = {
-  handler: `${handlerPath(__dirname)}/handler.getAllContactsHandler`,
+export const connectHubspot = {
+  handler: `${handlerPath(__dirname)}/handler.connectHubspot`,
   events: [
     {
       http: {
-        method: "get",
-        path: "dev/get-contacts",
-        request: {},
-      },
-    },
-  ],
-} as AWSFunction;
-
-export const meetingWithProperty = {
-  handler: `${handlerPath(__dirname)}/handler.getMeetingWithPropertyHandler`,
-  events: [
-    {
-      http: {
-        method: "get",
-        path: "dev/get-meetings",
-        request: {},
+        method: 'post',
+        path: 'app/install',
+        request: {
+          schemas: {
+            'application/json': connectHubspotValidator,
+          },
+          parameters: {
+            querystrings: {
+              grantType: true,
+              platform: true,
+              email: true,
+              mode: true,
+            },
+          },
+        },
       },
     },
   ],
